@@ -1,0 +1,25 @@
+{
+  "name": "100hourproject",
+  "version": "1.0.0",
+  "description": "DnD5e_Helper",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewArkwright/DnD5eHelper.git"
+  },
+  "author": "Andrew Arkwright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndrewArkwright/DnD5eHelper/issues"
+  },
+  "homepage": "https://github.com/AndrewArkwright/DnD5eHelper#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongodb": "^4.6.0"
+  }
+}

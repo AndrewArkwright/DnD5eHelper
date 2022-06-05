@@ -13,10 +13,13 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<label for="site-search">Search spell name:</label>
-		<input type="search" id="spellSearch">
-		<button>Search</button>
-		<p class = "spell"></p>
+
+		<form action="/charInput" method="POST"> <!-- Goes to localhost:8000/charInput after pressing button-->
+			<label for="site-search">Search spell name:</label>
+			<input type="search" id="spellSearch">
+			<button>Search</button>
+			<p class = "spell"></p>
+        </form>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>
