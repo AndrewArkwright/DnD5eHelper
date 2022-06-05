@@ -1,8 +1,11 @@
 const express = require("express")
+const bodyParser = require("body-parser")
 const cors = require("cors")
 const MongoClient = require("mongodb").MongoClient
 
 const app = express()
+app.set('view engine', 'ejs') //tells express we are using ejs
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors())
 const PORT = 8000
 
@@ -56,20 +59,23 @@ Survival(Wis)
 //spells/attacks available for level
 //feats and traints
 
-app.get("/", (request, response)=>{
+app.get("/", (request, response) => {
     response.sendFile(__dirname + "/index.html")
 })
 
-app.get('/api/:charName', (request,response)=>{
-    const rappersName = request.params.charName.toLowerCase()
-    if(character[charName]){
-        response.json(character[charName])
-    }else{
-        response.json(character["Unknown"])
-    }
+app.post('/findSpell', (request,response) => { //use this for getting info for spells or whatever, should be post because we need to gather data
+    const spellName = request.body.spell.toLowerCase().split(" ").join("-") //request.body is not a string
+    console.log("Searching API for spell:",spellName)
+    const url = `https://api.open5e.com/spells/${spellName}`
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            response.render("index.ejs", {spell: data})
+        })
+        .catch(error => console.log(`Error:${error}`))
 })
 
 app.listen(PORT, () =>{
     console.log(`The server is running on port ${PORT}!`)
 })
-//testing push

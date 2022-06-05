@@ -14,10 +14,14 @@
 	</head>
 	<body>
 
-		<form action="/findSpell" method="POST">
-			<label for="spellSearch">Search Spell Name:</label>
-			<input type="text" name="spell">
+		<form action="/" method="get"> <!--Hope it stays on / to get info-->
+			<label for="spellSearch">Search spell name:</label>
+			<input type="search" id="spellSearch">
 			<button>Search</button>
+            <section>
+                <h2>Spell Name:<%=spell.name%></h2>
+                <h3>Description:<%=spell.desc%></h3>
+            </section>
         </form>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
