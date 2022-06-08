@@ -79,3 +79,11 @@ app.post('/findSpell', (request,response) => { //use this for getting info for s
 app.listen(PORT, () =>{
     console.log(`The server is running on port ${PORT}!`)
 })
+
+//CRUD, we have a post, may need to change that to get if possible, but it seems like get is used for nav bar
+
+//can use post to create a new character, have the person click button or something to make some choices, store in database for others to use?
+//Get your character
+//delete character
+
+//if we keep the function in to delete and add, will need to make it so people have accounts
