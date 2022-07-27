@@ -22,7 +22,6 @@
 /*******************************************/
 
 body {
-
 }
 
 
@@ -30,7 +29,17 @@ body {
 /* LAYOUT
 /*******************************************/
 header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
 
+form{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 footer {
