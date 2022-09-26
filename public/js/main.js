@@ -1,4 +1,4 @@
-document.querySelector(".spellSearch").addEventListener("click", getSpell)
+/*document.querySelector(".spellSearch").addEventListener("click", getSpell)
 
 
 
@@ -24,6 +24,6 @@ async function getSpell() {
         })
         .catch(error => console.log(`Error:${error}`))
 }
-
+*/
 
 //https://donjon.bin.sh/5e/ ****************************LOOK FOR REFERENCES

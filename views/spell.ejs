@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+  	<meta charset="utf-8">
+  	<meta name="D&D 5e Spell Search" content="Tools to help play D&D version 5">
+  	<meta name="keywords" content="one, two, three">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>D&D Helper</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<body>
+			<header>
+				<span>Spell</span>
+			</header>
+
+			<main>
+				<form >
+					<label>Search Spell:</label>
+					<input type="text" name="spellName">
+					<button class="spellSearch">Search</button>
+				</form>
+		
+				<section class="spellDisplay">
+					<h1>Spell Info: </h1>
+					<span>Spell Name: <%=spell.name%></span>
+					<span><%=spell.desc%></span>
+				</section>
+			</main>
+
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
