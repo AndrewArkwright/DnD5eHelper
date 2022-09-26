@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
   	<meta charset="utf-8">
-  	<meta name="D&D 5e Character Creator" content="Tools to help play D&D version 5">
+  	<meta name="D&D 5e Character Creator" content="Tools to help play D&D 5th Edition">
   	<meta name="keywords" content="one, two, three">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
@@ -19,56 +19,88 @@
 			</header>
 			<main>
 				<form action='/createCharacter' method="POST">
+
+					<label for="charName">Character Name:</label>
+					<input name = "CharName" type="text" id="charName">
+
+					
+					<label for="alignment">Choose an alignment:</label>
+					<select name="Alignment" id="alignment">
+						<option value="lawfulGood">Lawful Good</option>
+						<option value="lawfulNeutral">Lawful Neutral</option>
+						<option value="lawfulEvil">Lawful Evil</option>
+						<option value="neutralGood">Neutral Good</option>
+						<option value="trueNeutral">True Neutral</option>
+						<option value="neutralEvil">Neutral Evil</option>
+						<option value="chaoticGood">Chaotic Good</option>
+						<option value="chaoticNeutral">Chaotic Neutral</option>
+						<option value="chaoticEvil">Chaotic Evil</option>
+					</select>
 	
 					<label for="race-select">Choose a race:</label>
 					<select name="Race" id="race">
-						<option value="dragonborn">Dragonborn</option>
-						<option value="dwarf">Dwarf</option>
-						<option value="elf">Elf</option>
-						<option value="gnome">Gnome</option>
-						<option value="halfling">Halfling</option>
-						<option value="halfelf">Half-Elf</option>
-						<option value="halforc">Half-Orc</option>
-						<option value="human">Human</option>
-						<option value="tiefling">Tiefling</option>
+						<option value="Dragonborn">Dragonborn</option>
+						<option value="Dwarf">Dwarf</option>
+						<option value="Elf">Elf</option>
+						<option value="Gnome">Gnome</option>
+						<option value="Halfling">Halfling</option>
+						<option value="Half-Elf">Half-Elf</option>
+						<option value="Half-Orc">Half-Orc</option>
+						<option value="Human">Human</option>
+						<option value="Tiefling">Tiefling</option>
 					</select>
-	
-					<!--
-						Dwarves are a bold and hardy race who are skilled warriors, miners, and works of stone and metal. They live for over 400 years in mountainous areas and stand under five feet tall, but can weigh as much as a human. They have a long history, have deep grudges, and are quite devoted to their traditions and gods. Dwarves are loyal and have a strong sense of justice, but are slow to trust others, especially races  
-					-->
 	
 					<label for="subrace-select">Choose a subrace (if available):</label>
 					<select name="Subrace" id="race">
-						<option value="hilldwarf">Hill Dwarf</option>
-						<option value="mountaindwarf">Mountain Dwarf</option>
-						<option value="highelf">High Elf</option>
-						<option value="woodelf">Wood Elf</option>
-						<option value="darkelf">Dark Elf (Drow)</option>
-						<option value="forestgnome">Forest Gnome</option>
-						<option value="rockgnome">Rock Gnome</option>
-						<option value="lightfoothalfling">Lightfoot Halfling</option>
-						<option value="stouthalfling">Stout Halfling</option>
-						<option value="na">Not Available</option>
+						<option value="Hill Dwarf">Hill Dwarf</option>
+						<option value="Mountain Dwarf">Mountain Dwarf</option>
+						<option value="High Elf">High Elf</option>
+						<option value="Wood Elf">Wood Elf</option>
+						<option value="Dark Elf">Dark Elf (Drow)</option>
+						<option value="Forest Gnome">Forest Gnome</option>
+						<option value="Rock Gnome">Rock Gnome</option>
+						<option value="Lightfoot Halfling">Lightfoot Halfling</option>
+						<option value="Stout Halfling">Stout Halfling</option>
+						<option value="Not Available">Not Available</option>
 					</select>
 	
 					<label for="class-select">Choose a class:</label>
 					<select name="Class" id="class">
-						<option value="barbarian">Barbarian</option>
-						<option value="bard">Bard</option>
-						<option value="cleric">Cleric</option>
-						<option value="druid">Druid</option>
-						<option value="fighter">Fighter</option>
-						<option value="monk">Monk</option>
-						<option value="paladin">Paladin</option>
-						<option value="ranger">Ranger</option>
-						<option value="rogue">Rogue</option>
-						<option value="sorcerer">Sorcerer</option>
-						<option value="warlock">Warlock</option>
+						<option value="Barbarian">Barbarian</option>
+						<option value="Bard">Bard</option>
+						<option value="Cleric">Cleric</option>
+						<option value="Druid">Druid</option>
+						<option value="Fighter">Fighter</option>
+						<option value="Monk">Monk</option>
+						<option value="Paladin">Paladin</option>
+						<option value="Ranger">Ranger</option>
+						<option value="Rogue">Rogue</option>
+						<option value="Sorcerer">Sorcerer</option>
+						<option value="Warlock">Warlock</option>
 						<option value="Wizard">Wizard</option>
 					</select>
+
+					<label for="traits" class="form-label">Personality Traits:</label>
+					<textarea class="form-control" id="textbox" name="textbox"></textarea>
+
+					<label for="ideals" class="form-label">Character Ideals:</label>
+					<textarea class="form-control" id="textbox" name="textbox"></textarea>
+
+					<label for="bonds" class="form-label">Character Bonds:</label>
+					<textarea class="form-control" id="textbox" name="textbox"></textarea>
+
+					<label for="flaws" class="form-label">Character Flaws:</label>
+					<textarea class="form-control" id="textbox" name="textbox"></textarea>
+
+					<label for="description" class="form-label">Character Traits and Features:</label>
+					<textarea class="form-control" id="textbox" name="textbox"></textarea>
 						
 					<button class="characterSubmit">Submit</button>
 				</form>
+
+				<section>
+					<p>All Ability Scores are automatically made and include race increases. Default rolls are included if you want to change how it is distributed, just remember to add the race bonuses and recalculate the HP (if modifier changed for Constitution) and ... </p>
+				</section>
 
 				<section>
 					<h1>Characters: </h1>

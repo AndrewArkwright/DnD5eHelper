@@ -1,19 +1,19 @@
 const mongoose = require('mongoose')
 
-
-const TodoSchema = new mongoose.Schema({
-    race: {
+console.log("Mongoose")
+const characterSchema = new mongoose.Schema({
+    Race: {
       type: String,
       required: true,
     },
-    subRace: {
+    Subrace: {
       type: String,
       required: true,
     },
-    class: {
+    Class: {
       type: String,
       required: true,
     }
 })
   
-module.exports = mongoose.model('Todo', TodoSchema)
+module.exports = mongoose.model('char', characterSchema)
