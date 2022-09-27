@@ -9,112 +9,109 @@
 		<title>D&D Helper</title>
 
 		<!-- external CSS link -->
-		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
-	<body>
-		<body>
-			<header>
-				<span>D&D Character Creator</span>
-			</header>
-			<main>
-				<form action='/createCharacter' method="POST">
+	<body class = ".bg-blue-700">
+		<header>
+			<span class="text-blue-600 text-3xl font-bold underline">D&D Character Creator</span>
+		</header>
+		<main>
+			<form action='/createCharacter' method="POST">
 
-					<label for="charName">Character Name:</label>
-					<input name = "CharName" type="text" id="charName">
+				<label for="charName">Character Name:</label>
+				<input name = "CharName" type="text" id="charName">
 
 					
-					<label for="alignment">Choose an alignment:</label>
-					<select name="Alignment" id="alignment">
-						<option value="lawfulGood">Lawful Good</option>
-						<option value="lawfulNeutral">Lawful Neutral</option>
-						<option value="lawfulEvil">Lawful Evil</option>
-						<option value="neutralGood">Neutral Good</option>
-						<option value="trueNeutral">True Neutral</option>
-						<option value="neutralEvil">Neutral Evil</option>
-						<option value="chaoticGood">Chaotic Good</option>
-						<option value="chaoticNeutral">Chaotic Neutral</option>
-						<option value="chaoticEvil">Chaotic Evil</option>
-					</select>
+				<label for="alignment">Choose an alignment:</label>
+				<select name="Alignment" id="alignment">
+					<option value="lawfulGood">Lawful Good</option>
+					<option value="lawfulNeutral">Lawful Neutral</option>
+					<option value="lawfulEvil">Lawful Evil</option>
+					<option value="neutralGood">Neutral Good</option>
+					<option value="trueNeutral">True Neutral</option>
+					<option value="neutralEvil">Neutral Evil</option>
+					<option value="chaoticGood">Chaotic Good</option>
+					<option value="chaoticNeutral">Chaotic Neutral</option>
+					<option value="chaoticEvil">Chaotic Evil</option>
+				</select>
 	
-					<label for="race-select">Choose a race:</label>
-					<select name="Race" id="race">
-						<option value="Dragonborn">Dragonborn</option>
-						<option value="Dwarf">Dwarf</option>
-						<option value="Elf">Elf</option>
-						<option value="Gnome">Gnome</option>
-						<option value="Halfling">Halfling</option>
-						<option value="Half-Elf">Half-Elf</option>
-						<option value="Half-Orc">Half-Orc</option>
-						<option value="Human">Human</option>
-						<option value="Tiefling">Tiefling</option>
-					</select>
+				<label for="race-select">Choose a race:</label>
+				<select name="Race" id="race">
+					<option value="Dragonborn">Dragonborn</option>
+					<option value="Dwarf">Dwarf</option>
+					<option value="Elf">Elf</option>
+					<option value="Gnome">Gnome</option>
+					<option value="Halfling">Halfling</option>
+					<option value="Half-Elf">Half-Elf</option>
+					<option value="Half-Orc">Half-Orc</option>
+					<option value="Human">Human</option>
+					<option value="Tiefling">Tiefling</option>
+				</select>
 	
-					<label for="subrace-select">Choose a subrace (if available):</label>
-					<select name="Subrace" id="race">
-						<option value="Hill Dwarf">Hill Dwarf</option>
-						<option value="Mountain Dwarf">Mountain Dwarf</option>
-						<option value="High Elf">High Elf</option>
-						<option value="Wood Elf">Wood Elf</option>
-						<option value="Dark Elf">Dark Elf (Drow)</option>
-						<option value="Forest Gnome">Forest Gnome</option>
-						<option value="Rock Gnome">Rock Gnome</option>
-						<option value="Lightfoot Halfling">Lightfoot Halfling</option>
-						<option value="Stout Halfling">Stout Halfling</option>
-						<option value="Not Available">Not Available</option>
-					</select>
+				<label for="subrace-select">Choose a subrace (if available):</label>
+				<select name="Subrace" id="race">
+					<option value="Hill Dwarf">Hill Dwarf</option>
+					<option value="Mountain Dwarf">Mountain Dwarf</option>
+					<option value="High Elf">High Elf</option>
+					<option value="Wood Elf">Wood Elf</option>
+					<option value="Dark Elf">Dark Elf (Drow)</option>
+					<option value="Forest Gnome">Forest Gnome</option>
+					<option value="Rock Gnome">Rock Gnome</option>
+					<option value="Lightfoot Halfling">Lightfoot Halfling</option>
+					<option value="Stout Halfling">Stout Halfling</option>
+					<option value="Not Available">Not Available</option>
+				</select>
 	
-					<label for="class-select">Choose a class:</label>
-					<select name="Class" id="class">
-						<option value="Barbarian">Barbarian</option>
-						<option value="Bard">Bard</option>
-						<option value="Cleric">Cleric</option>
-						<option value="Druid">Druid</option>
-						<option value="Fighter">Fighter</option>
-						<option value="Monk">Monk</option>
-						<option value="Paladin">Paladin</option>
-						<option value="Ranger">Ranger</option>
-						<option value="Rogue">Rogue</option>
-						<option value="Sorcerer">Sorcerer</option>
-						<option value="Warlock">Warlock</option>
-						<option value="Wizard">Wizard</option>
-					</select>
+				<label for="class-select">Choose a class:</label>
+				<select name="Class" id="class">
+					<option value="Barbarian">Barbarian</option>
+					<option value="Bard">Bard</option>
+					<option value="Cleric">Cleric</option>
+					<option value="Druid">Druid</option>
+					<option value="Fighter">Fighter</option>
+					<option value="Monk">Monk</option>
+					<option value="Paladin">Paladin</option>
+					<option value="Ranger">Ranger</option>
+					<option value="Rogue">Rogue</option>
+					<option value="Sorcerer">Sorcerer</option>
+					<option value="Warlock">Warlock</option>
+					<option value="Wizard">Wizard</option>
+				</select>
 
-					<label for="traits" class="form-label">Personality Traits:</label>
-					<textarea class="form-control" id="textbox" name="textbox"></textarea>
+				<label for="traits" class="form-label">Personality Traits:</label>
+				<textarea class="form-control" id="textbox" name="textbox"></textarea>
 
-					<label for="ideals" class="form-label">Character Ideals:</label>
-					<textarea class="form-control" id="textbox" name="textbox"></textarea>
+				<label for="ideals" class="form-label">Character Ideals:</label>
+				<textarea class="form-control" id="textbox" name="textbox"></textarea>
 
-					<label for="bonds" class="form-label">Character Bonds:</label>
-					<textarea class="form-control" id="textbox" name="textbox"></textarea>
+				<label for="bonds" class="form-label">Character Bonds:</label>
+				<textarea class="form-control" id="textbox" name="textbox"></textarea>
 
-					<label for="flaws" class="form-label">Character Flaws:</label>
-					<textarea class="form-control" id="textbox" name="textbox"></textarea>
+				<label for="flaws" class="form-label">Character Flaws:</label>
+				<textarea class="form-control" id="textbox" name="textbox"></textarea>
 
-					<label for="description" class="form-label">Character Traits and Features:</label>
-					<textarea class="form-control" id="textbox" name="textbox"></textarea>
+				<label for="description" class="form-label">Character Traits and Features:</label>
+				<textarea class="form-control" id="textbox" name="textbox"></textarea>
 						
-					<button class="characterSubmit">Submit</button>
-				</form>
+				<button class="characterSubmit">Submit</button>
+			</form>
 
-				<section>
-					<p>All Ability Scores are automatically made and include race increases. Default rolls are included if you want to change how it is distributed, just remember to add the race bonuses and recalculate the HP (if modifier changed for Constitution) and ... </p>
-				</section>
+			<section>
+				<p>All Ability Scores are automatically made and include race increases. Default rolls are included if you want to change how it is distributed, just remember to add the race bonuses and recalculate the HP (if modifier changed for Constitution) and ... </p>
+			</section>
 
-				<section>
-					<h1>Characters: </h1>
-					<ul class="characterList">
-					<% for(let i=0; i < data.length; i++) {%>
-						<li class="char">
-							<span><%= data[i].Race %></span>
-							<span><%= data[i].Subrace %></span>
-							<span><%= data[i].Class %></span>
-						</li>
-					<% } %>
-				</section>
-			</main>
-
+			<section>
+				<h1>Characters: </h1>
+				<ul class="characterList">
+				<% for(let i=0; i < data.length; i++) {%>
+					<li class="char">
+						<span><%= data[i].Race %></span>
+						<span><%= data[i].Subrace %></span>
+						<span><%= data[i].Class %></span>
+					</li>
+				<% } %>
+			</section>
+		</main>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>
