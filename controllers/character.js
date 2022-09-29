@@ -511,9 +511,9 @@ let profBonus = 2 //proficiency bonus determined by class and level, but all sta
 
             await char.create({Race: request.body.Race, Subrace: request.body.Subrace, Class: request.body.Class})
             console.log('Character has been added!')
-            response.redirect('/')
+            response.redirect('/character')
         }catch(err){
             console.log(err)
         }
-    },
+    }
 }

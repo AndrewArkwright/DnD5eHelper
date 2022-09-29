@@ -40,6 +40,7 @@ app.use(flash())
   
 app.use('/', mainRoutes)
 app.use('/character', characterRoutes)
+app.use('/createCharacter', characterRoutes) // Should go to characterRoutes
  
 app.listen(process.env.PORT, ()=>{
   console.log('Server is running, you better catch it!')

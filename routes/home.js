@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const homeController = require('../controllers/home')
+console.log("HomeRoute")
 
-router.get('/', homeController.getCharacters)
-router.post('/createCharacter', homeController.createCharacter)
+router.get('/', ensureAuth, characterController.getCharacters)
 
 module.exports = router
 
