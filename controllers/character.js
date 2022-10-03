@@ -11,68 +11,34 @@ module.exports = {
     },
     createCharacter: async (request, response)=>{
         try{
-            /**
-             * @updateSCHEMA
-            */
-
             console.log(request.body.CharName)
             console.log(request.body.Alignment)
-
-            //send as object?
 
             /************Things to do**************/
             /*
             Add this for spell classes - \nCharisma is your spellcasting ability for spells\nYour spell save DC = 8 + proficiency bonus = charisma modifier. Your spell attack modifier = proficiency bonus + charisma modifier.
             Adjust Schemas and verify it adds EVERYTHING to the db
-            Add extra info (stuff at the bottom for what else they need to do and etc) at the end of ejs
-            Add login
-            */
+            Proficiency bonus change at very bottom? Just need to double check
+            
+            Look into changing AC. Some classes and races have traits that increase AC like when you do not have armor. Might just need to add a blurb about it
 
-            /************Things to do AFTER MVP**************/
-            /*
             Make it look prettyish and mobile friendly
             Make disability friendly
             Remove certain options when an option is made. Like don't let me choose dark elf sub race after I chose human for main race
             Option to delete characters
             Option to reset password/email
             Character limits for textboxes?
-            Make sure there are errors logging in if they do not meet the requirements
-            */
 
-
-            /*
             inspiration - given by DM
 
             AC - 10 + dex modifier, adding armor/clothing will change it from 10
             Initiative - dex mod
-
-            Attacks/spells - need still, but may just note what spells are available and then to choose which one using spell finder
-
-            equipment - may have to have dm help? pg 143 shows the starting gold each player has each classes starting amount, may 
 
             Personality traits - need 1 -- each one seems to have 2 skill proficiencies, a tool proficiency, and equipment related to that like a bard having a loot or theif with lockpick
             Ideals - need 1
             Bonds - need 1
             Flaws - need 1
 
-            for spell people - school of magic? check other character pages behind main page in book
-
-            All of the information is based off of the information side of the D&D 5e handbook only. I do not own any of it and only own this website. All rolls are automatically randomized and done for you. If anything seems incorrect or if I should add something important, let me know.
-
-            What is left for you to do after filling out the form -
-                -Choose your equipment from the choices I gave you and remember to adjust your AC appropriately (armor from equipment + dex modifier). Your DM may or may not allow you to use your gold before hand as well to purchase items. You can use this website to search for items and look up details about them: https://www.dndbeyond.com/equipment.
-                -Write your background including your personality traits, ideals, bonds, and flaws. Based off of that information, choose two skill proficiencies, a tool proficiency, and possibly add related equipment. Consolt your DM regarding how many to choose/limitations. Example: Acolyte: Trait - I idolize a particular hero of my faith and constantly refer to that person's deeds and examples, Ideal - I hope to one day rise to the top of my faith's religious hierarchy, Bond - I owe my life to the priest who took me in when my parents died, Flaw - I judge others harshly and myself even more severly. Then your description would expand on these.
-                -Read your race and class traits. They will tell you how many cantrips/spells you need to choose. You can look up the spells and cantrips here: http://dnd5e.wikidot.com/spells. It will also tell you if you have to make any other decisions like Dragonborn needing to choose what draconic ancestory they are apart of.
-                -Find out what to do when you level up
-
-            Future updates: 
-                -I plan on making it easier to choose equipment by most likely adding the list of equipment you can choose from.
-                -I plan on adding a way to search for the spells/skills that you can have to see details about them.
-                -Might add some general helpful information/links to help play.
-                -Might add information on how to level up each character or add the ability to have it done manually
-                -Might add a little text based game to test your character against enemies.
-                -Might be able to find a way to put the information on a character sheet that is printable.
-                -After the above, I will start to expand the info by adding stuff like races and classes.
             */
 
 //generate 6 Ability Score numbers
@@ -466,12 +432,6 @@ else if (request.body.Class === "Warlock" || request.body.Class === "Bard" || re
 console.log("Adjust per class and final score: ", abilityScoreArray)
 
 //Add race increases (request.body.Race and request.body.Subrace)
-//strength - maountain dwarf +2 , dragonborn +2, half-orc +2, human +1
-//dexterity - elf +2, halfling +2, forest gnome + 1, human + 1
-//constitution - dwarf + 2, stout halfling +1, rock gnome +1, half orc + 1, human +1
-//intelligence - high elf +1, gnome +2, tiefling +1, human +1
-//wisdom - hill warf + 1, wood elf +1, human +1
-//Charisma - half elf + 2, drow + 1, lightfoot halfling +1, dragonborn +1, human +1, tiefling+2
 
 //Make modifiers
 let abilityScoreMod = abilityScoreArray.map(value => Math.floor((value - 10)/2))
