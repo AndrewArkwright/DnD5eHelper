@@ -11,127 +11,99 @@
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="css/style.css">
 	</head>
-	<body>
+	<body class="flex">
 		<header>
-			<span class="text-blue-600 text-3xl font-bold underline">D&D Character Creator</span>
+			<span class="block text-lg font-medium leading-6 text-gray-900">D&D Character Creator</span>
 		</header>
-		<main>
+		<main class="mt-5 md:col-span-2 md:mt-0">
 			<form action='/character/createCharacter' method="POST">
 
-				<label for="charName">Character Name:</label>
-				<input name = "CharName" type="text" id="charName">
+				<div class="flex-auto w-1/2 basis-1/2 col-span-6 sm:col-span-3">
+					<label for="charName" class = "text-sm font-medium text-gray-700">Character Name:</label>
+					<input name = "CharName" type="text" id="charName" class = "block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+				</div>
 
-					
-				<label for="alignment">Choose an alignment:</label>
-				<select name="Alignment" id="alignment">
-					<option value="lawfulGood">Lawful Good</option>
-					<option value="lawfulNeutral">Lawful Neutral</option>
-					<option value="lawfulEvil">Lawful Evil</option>
-					<option value="neutralGood">Neutral Good</option>
-					<option value="trueNeutral">True Neutral</option>
-					<option value="neutralEvil">Neutral Evil</option>
-					<option value="chaoticGood">Chaotic Good</option>
-					<option value="chaoticNeutral">Chaotic Neutral</option>
-					<option value="chaoticEvil">Chaotic Evil</option>
-				</select>
+				<div class="flex-auto w-1/2 basis-1/2 col-span-6 sm:col-span-3">	
+					<label for="alignment" class ="text-sm font-medium text-gray-700">Choose an alignment:</label>
+					<select name="Alignment" id="alignment" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+						<option value="lawfulGood">Lawful Good</option>
+						<option value="lawfulNeutral">Lawful Neutral</option>
+						<option value="lawfulEvil">Lawful Evil</option>
+						<option value="neutralGood">Neutral Good</option>
+						<option value="trueNeutral">True Neutral</option>
+						<option value="neutralEvil">Neutral Evil</option>
+						<option value="chaoticGood">Chaotic Good</option>
+						<option value="chaoticNeutral">Chaotic Neutral</option>
+						<option value="chaoticEvil">Chaotic Evil</option>
+					</select>
+				</div>
+				
+				<div class="flex-auto w-1/2 basis-1/2 col-span-6 sm:col-span-3">
+					<label for="race-select" class = "text-sm font-medium text-gray-700">Choose a race:</label>
+					<select name="Race" id="race" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+						<option value="Dragonborn">Dragonborn</option>
+						<option value="Dwarf">Dwarf</option>
+						<option value="Elf">Elf</option>
+						<option value="Gnome">Gnome</option>
+						<option value="Halfling">Halfling</option>
+						<option value="Half-Elf">Half-Elf</option>
+						<option value="Half-Orc">Half-Orc</option>
+						<option value="Human">Human</option>
+						<option value="Tiefling">Tiefling</option>
+					</select>
+				</div>
 	
-				<label for="race-select">Choose a race:</label>
-				<select name="Race" id="race">
-					<option value="Dragonborn">Dragonborn</option>
-					<option value="Dwarf">Dwarf</option>
-					<option value="Elf">Elf</option>
-					<option value="Gnome">Gnome</option>
-					<option value="Halfling">Halfling</option>
-					<option value="Half-Elf">Half-Elf</option>
-					<option value="Half-Orc">Half-Orc</option>
-					<option value="Human">Human</option>
-					<option value="Tiefling">Tiefling</option>
-				</select>
+				<div class="flex-auto w-1/2 basis-1/2 col-span-6 sm:col-span-3">
+					<label for="subrace-select" class = "text-sm font-medium text-gray-700">Choose a subrace (if available):</label>
+					<select name="Subrace" id="race" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+						<option value="Hill Dwarf">Hill Dwarf</option>
+						<option value="Mountain Dwarf">Mountain Dwarf</option>
+						<option value="High Elf">High Elf</option>
+						<option value="Wood Elf">Wood Elf</option>
+						<option value="Dark Elf">Dark Elf (Drow)</option>
+						<option value="Forest Gnome">Forest Gnome</option>
+						<option value="Rock Gnome">Rock Gnome</option>
+						<option value="Lightfoot Halfling">Lightfoot Halfling</option>
+						<option value="Stout Halfling">Stout Halfling</option>
+						<option value="Not Available">Not Available</option>
+					</select>
+				</div>
 	
-				<label for="subrace-select">Choose a subrace (if available):</label>
-				<select name="Subrace" id="race">
-					<option value="Hill Dwarf">Hill Dwarf</option>
-					<option value="Mountain Dwarf">Mountain Dwarf</option>
-					<option value="High Elf">High Elf</option>
-					<option value="Wood Elf">Wood Elf</option>
-					<option value="Dark Elf">Dark Elf (Drow)</option>
-					<option value="Forest Gnome">Forest Gnome</option>
-					<option value="Rock Gnome">Rock Gnome</option>
-					<option value="Lightfoot Halfling">Lightfoot Halfling</option>
-					<option value="Stout Halfling">Stout Halfling</option>
-					<option value="Not Available">Not Available</option>
-				</select>
-	
-				<label for="class-select">Choose a class:</label>
-				<select name="Class" id="class">
-					<option value="Barbarian">Barbarian</option>
-					<option value="Bard">Bard</option>
-					<option value="Cleric">Cleric</option>
-					<option value="Druid">Druid</option>
-					<option value="Fighter">Fighter</option>
-					<option value="Monk">Monk</option>
-					<option value="Paladin">Paladin</option>
-					<option value="Ranger">Ranger</option>
-					<option value="Rogue">Rogue</option>
-					<option value="Sorcerer">Sorcerer</option>
-					<option value="Warlock">Warlock</option>
-					<option value="Wizard">Wizard</option>
-				</select>
+				<div class="flex-auto w-1/2 basis-1/2 col-span-6 sm:col-span-3">
+					<label for="class-select" class = "text-sm font-medium text-gray-700">Choose a class:</label>
+					<select name="Class" id="class" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+						<option value="Barbarian">Barbarian</option>
+						<option value="Bard">Bard</option>
+						<option value="Cleric">Cleric</option>
+						<option value="Druid">Druid</option>
+						<option value="Fighter">Fighter</option>
+						<option value="Monk">Monk</option>
+						<option value="Paladin">Paladin</option>
+						<option value="Ranger">Ranger</option>
+						<option value="Rogue">Rogue</option>
+						<option value="Sorcerer">Sorcerer</option>
+						<option value="Warlock">Warlock</option>
+						<option value="Wizard">Wizard</option>
+					</select>
+				</div>
 
-				<label for="traits" class="form-label">Personality Traits:</label>
-				<textarea class="form-control" id="textbox" name="textbox"></textarea>
+				<label for="traits" class="form-label block text-sm font-medium text-gray-700">Personality Traits:</label>
+				<textarea class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
 
-				<label for="ideals" class="form-label">Character Ideals:</label>
-				<textarea class="form-control" id="textbox" name="textbox"></textarea>
+				<label for="ideals" class="form-label block text-sm font-medium text-gray-700">Character Ideals:</label>
+				<textarea class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
 
-				<label for="bonds" class="form-label">Character Bonds:</label>
-				<textarea class="form-control" id="textbox" name="textbox"></textarea>
+				<label for="bonds" class="form-label block text-sm font-medium text-gray-700">Character Bonds:</label>
+				<textarea class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
 
-				<label for="flaws" class="form-label">Character Flaws:</label>
-				<textarea class="form-control" id="textbox" name="textbox"></textarea>
+				<label for="flaws" class="form-label block text-sm font-medium text-gray-700">Character Flaws:</label>
+				<textarea class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
 
-				<label for="description" class="form-label">Character Traits and Features:</label>
-				<textarea class="form-control" id="textbox" name="textbox"></textarea>
+				<label for="description" class="form-label block text-sm font-medium text-gray-700">Character Traits and Features:</label>
+				<textarea class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
 						
-				<button class="characterSubmit">Submit</button>
+				<button class="characterSubmit inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white 		shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Submit</button>
 			</form>
-
-			<p>All of the information is based off of the information side of the D&D 5e handbook only. I do not own any of it and only own this website. All rolls are automatically randomized and done for you. If anything seems incorrect or if I should add something important, let me know <a href="https://aarkwright.netlify.app/">here</a></p>
-
-			<section>
-				<p>What is left for you to do:</p>
-				<ol>
-					<li>Choose your equipment from the choices I gave you and remember to adjust your AC appropriately (armor from equipment + dex modifier). Your DM may or may not allow you to use your gold before hand as well to purchase items. You can use this website to search for items and look up details about them: <a href="https://www.dndbeyond.com/equipment">here</a>.</li>
-					<li>Write your background including your personality traits, ideals, bonds, and flaws. Based off of that information, choose two skill proficiencies, a tool proficiency, and possibly add related equipment. Consolt your DM regarding how many to choose/limitations. Example: Acolyte: Trait - I idolize a particular hero of my faith and constantly refer to that person's deeds and examples, Ideal - I hope to one day rise to the top of my faith's religious hierarchy, Bond - I owe my life to the priest who took me in when my parents died, Flaw - I judge others harshly and myself even more severly. Then your description would expand on these.</li>
-					<li>Read your race and class traits. They will tell you how many cantrips/spells you need to choose. You can look up the spells and cantrips here: <a href="http://dnd5e.wikidot.com/spells">here</a>. It will also tell you if you have to make any other decisions like Dragonborn needing to choose what draconic ancestory they are apart of.</li>
-					<li>Find out what to do when you level up</li>
-				</ol>
-			</section>
-
-			<section>
-				<p>Future updates:</p>
-				<ol>
-					<li>I plan on making it easier to choose equipment by most likely adding the list of equipment you can choose from.</li>
-					<li>I plan on adding a way to search for the spells/skills that you can have to see details about them.</li>
-					<li>Might add some general helpful information/links to help play.</li>
-					<li>Might add information on how to level up each character or add the ability to have it done manually.</li>
-					<li>>Might add a little text based game to test your character against enemies.</li>
-					<li>Might be able to find a way to put the information on a character sheet that is printable.</li>
-					<li>After the above, I will start to expand the info by adding stuff like races and classes.</li>
-				</ol>
-			</section>
-
-			<section>
-				<h1>Characters: </h1>
-				<ul class="characterList">
-				<% for(let i=0; i < data.length; i++) {%>
-					<li class="char">
-						<span><%= data[i].Race %></span>
-						<span><%= data[i].Subrace %></span>
-						<span><%= data[i].Class %></span>
-					</li>
-				<% } %>
-			</section>
 		</main>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
