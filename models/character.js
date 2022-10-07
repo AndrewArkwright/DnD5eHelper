@@ -8,7 +8,7 @@ const characterSchema = new mongoose.Schema({
     },
     Subrace: {
       type: String,
-      required: true,
+      required: false,
     },
     Class: {
       type: String,

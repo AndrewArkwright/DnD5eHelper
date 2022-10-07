@@ -11,21 +11,23 @@
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="css/style.css">
 	</head>
-	<body class="flex">
+	<body>
 		<header>
-			<span class="block text-lg font-medium leading-6 text-gray-900">D&D Character Creator</span>
+			<%- include('partials/header') -%>
 		</header>
-		<main class="mt-5 md:col-span-2 md:mt-0">
+		<main class="ml-5 mt-5">
+			<span class="block text-lg font-medium leading-6 text-gray-900">D&D Character Creator</span>
 			<form action='/character/createCharacter' method="POST">
 
-				<div class="flex-auto w-1/2 basis-1/2 col-span-6 sm:col-span-3">
+				<div class="w-1/4 my-2">
 					<label for="charName" class = "text-sm font-medium text-gray-700">Character Name:</label>
 					<input name = "CharName" type="text" id="charName" class = "block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
 				</div>
 
-				<div class="flex-auto w-1/2 basis-1/2 col-span-6 sm:col-span-3">	
-					<label for="alignment" class ="text-sm font-medium text-gray-700">Choose an alignment:</label>
+				<div class="inline-block w-1/5 my-2">	
+					<label for="alignment" class ="text-sm font-medium text-gray-700">Alignment:</label>
 					<select name="Alignment" id="alignment" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+						<option value="none" selected disabled hidden>Select</option>
 						<option value="lawfulGood">Lawful Good</option>
 						<option value="lawfulNeutral">Lawful Neutral</option>
 						<option value="lawfulEvil">Lawful Evil</option>
@@ -38,9 +40,10 @@
 					</select>
 				</div>
 				
-				<div class="flex-auto w-1/2 basis-1/2 col-span-6 sm:col-span-3">
-					<label for="race-select" class = "text-sm font-medium text-gray-700">Choose a race:</label>
+				<div class="inline-block w-1/5 my-2" onchange="enableSubrace()">
+					<label for="race-select" class = "text-sm font-medium text-gray-700">Race:</label>
 					<select name="Race" id="race" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+						<option value="none" selected disabled hidden>Select</option>
 						<option value="Dragonborn">Dragonborn</option>
 						<option value="Dwarf">Dwarf</option>
 						<option value="Elf">Elf</option>
@@ -53,25 +56,47 @@
 					</select>
 				</div>
 	
-				<div class="flex-auto w-1/2 basis-1/2 col-span-6 sm:col-span-3">
-					<label for="subrace-select" class = "text-sm font-medium text-gray-700">Choose a subrace (if available):</label>
-					<select name="Subrace" id="race" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-						<option value="Hill Dwarf">Hill Dwarf</option>
-						<option value="Mountain Dwarf">Mountain Dwarf</option>
+				<div class="inline-block w-1/5 my-2 hidden" id="elfSubrace" >
+					<label for="subrace-select" class = "text-sm font-medium text-gray-700">Subrace:</label>
+					<select name="Subrace" id="subrace" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+						<option value="none" selected disabled hidden>Select</option>
 						<option value="High Elf">High Elf</option>
 						<option value="Wood Elf">Wood Elf</option>
 						<option value="Dark Elf">Dark Elf (Drow)</option>
+					</select>
+				</div>
+
+				<div class="inline-block w-1/5 my-2 hidden" id="dwarfSubrace" >
+					<label for="subrace-select" class = "text-sm font-medium text-gray-700">Subrace:</label>
+					<select name="Subrace" id="subrace" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+						<option value="none" selected disabled hidden>Select</option>
+						<option value="Hill Dwarf">Hill Dwarf</option>
+						<option value="Mountain Dwarf">Mountain Dwarf</option>
+					</select>
+				</div>
+
+				<div class="inline-block w-1/5 my-2 hidden" id="gnomeSubrace" >
+					<label for="subrace-select" class = "text-sm font-medium text-gray-700">Subrace:</label>
+					<select name="Subrace" id="subrace" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+						<option value="none" selected disabled hidden>Select</option>
 						<option value="Forest Gnome">Forest Gnome</option>
 						<option value="Rock Gnome">Rock Gnome</option>
+					</select>
+				</div>
+
+				<div class="inline-block w-1/5 my-2 hidden" id="halflingSubrace" >
+					<label for="subrace-select" class = "text-sm font-medium text-gray-700">Subrace:</label>
+					<select name="Subrace" id="subrace" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+						<option value="none" selected disabled hidden>Select</option>
 						<option value="Lightfoot Halfling">Lightfoot Halfling</option>
 						<option value="Stout Halfling">Stout Halfling</option>
-						<option value="Not Available">Not Available</option>
 					</select>
 				</div>
 	
-				<div class="flex-auto w-1/2 basis-1/2 col-span-6 sm:col-span-3">
-					<label for="class-select" class = "text-sm font-medium text-gray-700">Choose a class:</label>
+				<div class="inline-block w-1/5 my-2">
+					<label for="class-select" class = "text-sm font-medium text-gray-700">Class:</label>
 					<select name="Class" id="class" class="mt-1 block w-1/2 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+						<option value="none" selected disabled hidden>Select</option>
 						<option value="Barbarian">Barbarian</option>
 						<option value="Bard">Bard</option>
 						<option value="Cleric">Cleric</option>
@@ -87,22 +112,35 @@
 					</select>
 				</div>
 
-				<label for="traits" class="form-label block text-sm font-medium text-gray-700">Personality Traits:</label>
-				<textarea class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
+				<div class="w-3/4 my-2">
+					<label for="traits" class="form-label block text-sm font-medium text-gray-700">Personality Traits:</label>
+					<textarea class="form-control h-20 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
+				</div>
 
-				<label for="ideals" class="form-label block text-sm font-medium text-gray-700">Character Ideals:</label>
-				<textarea class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
+				<div class="w-3/4 my-2">
+					<label for="ideals" class="form-label block text-sm font-medium text-gray-700">Character Ideals:</label>
+					<textarea class="form-control h-20 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
+				</div>
 
-				<label for="bonds" class="form-label block text-sm font-medium text-gray-700">Character Bonds:</label>
-				<textarea class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
+				<div class="w-3/4 my-2">
+					<label for="bonds" class="form-label block text-sm font-medium text-gray-700">Character Bonds:</label>
+					<textarea class="form-control h-20 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
+				</div>
 
-				<label for="flaws" class="form-label block text-sm font-medium text-gray-700">Character Flaws:</label>
-				<textarea class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
+				<div class="w-3/4 my-2">
+					<label for="flaws" class="form-label block text-sm font-medium text-gray-700">Character Flaws:</label>
+					<textarea class="form-control h-20 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
+				</div>
 
-				<label for="description" class="form-label block text-sm font-medium text-gray-700">Character Traits and Features:</label>
-				<textarea class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
-						
-				<button class="characterSubmit inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white 		shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Submit</button>
+				<div class="w-3/4 my-2">
+					<label for="description" class="form-label block text-sm font-medium text-gray-700">Character Traits and Features:</label>
+					<textarea class="form-control h-20 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="textbox" name="textbox"></textarea>
+				</div>
+
+				<div class="my-2">
+					<button class="characterSubmit inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white 		shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Submit</button>
+				</div>
+
 			</form>
 		</main>
 		<script type="text/javascript" src="js/main.js"></script>
