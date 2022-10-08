@@ -42,6 +42,10 @@ const characterSchema = new mongoose.Schema({
       type: Array,
       required: true
     },
+    perception: {
+      type: Number,
+      required: true
+    },
     hp: {
       type: Number,
       required: true

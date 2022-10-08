@@ -11,15 +11,15 @@
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="css/style.css">
     <body>
-        <header>
+        <header class="mb-5">
             <%- include('partials/header') -%>
         </header>
 
-        <main>
-            <h1>Characters: </h1>
+        <main class="flex flex-col mx-10">
+            <h1>Your characters:</h1>
             <ul class="characterList">
             <% for(let i=0; i < data.length; i++) {%>
-                <li class="char">
+                <li class="char flex flex-col ml-20 mb-10">
                     <span>Name: <%= data[i].Name %></span>
                     <span>Race: <%= data[i].Race %></span>
                     <span>Subrace: <%= data[i].Subrace %></span>
@@ -27,9 +27,10 @@
                     <span>Alignment: <%= data[i].Alignment %></span>
                     <span>HP: <%= data[i].hp %></span>
                     <span>Speed: <%= data[i].speed %></span>
-                    <span>Ability Scores: <%= data[i].abilityScoreArray %></span>
+                    <span>Ability Scores (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma): <%= data[i].abilityScoreArray %></span>
                     <span>Ability Score Modifiers: <%= data[i].abilityScoreMod %></span>
-                    <span>Ability Score Rolls: <%= data[i].abilityScoresConst %></span>
+                    <span>Ability Score Rolls (before racial bonuses and assigning to recommended ability scores per class): <%= data[i].abilityScoresConst %></span>
+                    <span>Perception: <%= data[i].perception %></span>
                     <span>Saving Throws: <%= data[i].savingThrows %></span>
                     <span>Weapon Proficiencies: <%= data[i].weaponProf %></span>
                     <span>Armor Proficiencies: <%= data[i].armorProf %></span>
@@ -46,31 +47,33 @@
             <% } %>
         </main>
 
-        <section>
-            <p>All of the information is based on the information from the D&D 5e handbook. I do not own any of it and only on this website. All rolls are automatically randomized and done for you. If anything seems incorrect or if I should add something important, let me know <a href="https://aarkwright.netlify.app/">here</a></p>
+        <section class="mx-10">
+            <p class="mb-10">All of the information is based on the information from the D&D 5e handbook. I do not own any of it and only on this website. All rolls are automatically randomized and done for you. If anything seems incorrect or if I should add something important, let me know <a class="underline decoration-teal-300 text-teal-300" href="https://aarkwright.netlify.app/">here</a>.</p>
  
-            <section>
+            <section class="mb-10">
                 <p>What is left for you to do:</p>
-                <ol>
-                    <li>Choose your equipment from the choices I gave you and remember to adjust your AC appropriately (armor from equipment + dex modifier). Your DM may or may not allow you to use your gold beforehand as well to purchase items. You can use this website to search for items and look up details about them <a href="https://www.dndbeyond.com/equipment">here</a>.</li>
-                    <li>Write your background including your personality traits, ideals, bonds, and flaws. Based on that information, choose two skill proficiencies, a tool proficiency, and possibly add related equipment. Consult your DM regarding how many to choose/limitations. Example: Acolyte: Trait - I idolize a particular hero of my faith and constantly refer to that person's deeds and examples, Ideal - I hope to one day rise to the top of my faith's religious hierarchy, Bond - I owe my life to the priest who took me in when my parents died, Flaw - I judge others harshly and myself even more severely. Then your description would expand on these.</li>
-                    <li>Read your race and class traits. They will tell you how many cantrips/spells you need to choose. You can look up the spells and cantrips <a href="http://dnd5e.wikidot.com/spells">here</a>. It will also tell you if you have to make other decisions like Dragonborn needing to choose what draconic ancestry they are a part of.</li>
-                    <li>Find out what to do when you level up</li>
-                </ol>
+
+                <ul class="list-disc">
+                    <li class="ml-20">You need to choose your equipment from the choices I gave you and remember to adjust your AC appropriately (armor from equipment + dex modifier). Your DM may or may not allow you to use your gold beforehand as well to purchase items. You can use this website to search for items and look up details about them <a class="underline decoration-teal-300 text-teal-300" href="https://www.dndbeyond.com/equipment">here</a>.</li>
+                    <li class="ml-20">Based on the information about your character including the personality traits, ideals, bonds, and flaws, choose two skill proficiencies, a tool proficiency, and possibly equipment and or languages to add to your character. Consult your DM regarding any limitations or rules. To view some examples, click <a class="underline decoration-teal-300 text-teal-300" href="https://www.dndbeyond.com/backgrounds?filter-name=&filter-source=1">here</a>.</li>
+                    <li class="ml-20">Read your race and class traits. They will tell you how many cantrips/spells you need to choose. You can look up the spells and cantrips <a href="http://dnd5e.wikidot.com/spells">here</a>. It will also tell you if you have to make other decisions like the Dragonborn race needing to choose what draconic ancestry they are a part of.</li>
+                    <li class="ml-20">Look up your class and figure out what you need to adjust when you level up. You can look up information about your class <a class="underline decoration-teal-300 text-teal-300" href="https://www.dndbeyond.com/classes">here</a> and your race <a class="underline decoration-teal-300 text-teal-300" href="https://www.dndbeyond.com/races">here</a>.</li>
+                </ul>
             </section>
  
-            <section>
+            <section class="mb-10">
                 <p>Future updates:</p>
-                <ol>
-                    <li>Make it easier to choose equipment by most likely adding the list of equipment you can choose from.</li>
-                    <li>Add a way to search for the spells/skills that you can have to see details about them.</li>
-                    <li>Add some general helpful information/links to help play.</li>
-                    <li>Add information on how to level up each character or add the ability to have it done manually.</li>
-                    <li>Add a little text-based game to test your character against enemies.</li>
-                    <li>Find a way to put the information on a character sheet that is printable.</li>
-                    <li>Start to expand the options by adding stuff like races and classes.</li>
-                </ol>
+                <ul class="list-disc">
+                    <li class="ml-20">Make it easier to choose equipment by most likely adding the list of equipment you can choose from.</li>
+                    <li class="ml-20">Add a way to search for the spells/skills that you can have to see details about them.</li>
+                    <li class="ml-20">Add some general helpful information/links to help play.</li>
+                    <li class="ml-20">Add information on how to level up each character or add the ability to have it done manually.</li>
+                    <li class="ml-20">Add a little text-based game to test your character against enemies.</li>
+                    <li class="ml-20">Find a way to put the information on a character sheet that is printable.</li>
+                    <li class="ml-20">Start to expand the options by adding stuff like races and classes.</li>
+                </ul>
             </section>
+
         </section>
     </body>
 </html>

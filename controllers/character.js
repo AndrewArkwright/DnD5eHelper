@@ -25,7 +25,6 @@ module.exports = {
 
             Make it look prettyish and mobile friendly
             Make disability friendly
-            Remove certain options when an option is made. Like don't let me choose dark elf sub race after I chose human for main race
             Option to delete characters
             Option to reset password/email
             Character limits for textboxes?
@@ -229,7 +228,7 @@ if (request.body.Class === "Paladin") {
     for(let i = 0; i < 4; i++) {gp += Math.ceil(Math.random() * 4)}
     gp *= 10
 
-    equipment = ["martial weapon and a shield or two martial weapons", "five javelins or simple melee weapon", "priest's pack or exmplorer's pack", "chain mail", "holy symbol", `Gold pieces: ${gp}`]
+    equipment = ["martial weapon and a shield or two martial weapons", "five javelins or simple melee weapon", "priest's pack or exmplorer's pack", "chain mail", "holy symbol", `gold pieces: ${gp}`]
 }
 else if (request.body.Class === "Barbarian" || request.body.Class === "Fighter") {
 
@@ -251,7 +250,7 @@ else if (request.body.Class === "Barbarian" || request.body.Class === "Fighter")
         for(let i = 0; i < 2; i++) {gp += Math.ceil(Math.random() * 4)}
         gp *= 10
 
-        equipment = ["greataxe or martial melee weapon", "two handaxes or any simple weapon", "explorer's pack", "4 javelins", `Gold pieces: ${gp}`]
+        equipment = ["greataxe or martial melee weapon", "two handaxes or any simple weapon", "explorer's pack", "4 javelins", `gold pieces: ${gp}`]
     }
 
     else {
@@ -263,7 +262,7 @@ else if (request.body.Class === "Barbarian" || request.body.Class === "Fighter")
         for(let i = 0; i < 5; i++) {gp += Math.ceil(Math.random() * 4)}
         gp *= 10
 
-        equipment = ["chain mail or leather armor, a long bow, and 20 arrows", "martial weapon and a shield or two martial weapons", "light crossbow with 20 bolts or two hand axes", "dungeoneer's pack or explorer's pack", `Gold pieces: ${gp}`]
+        equipment = ["chain mail or leather armor, a long bow and 20 arrows", "martial weapon and a shield or two martial weapons", "light crossbow with 20 bolts or two hand axes", "dungeoneer's pack or explorer's pack", `gold pieces: ${gp}`]
     }
 }
 else if (request.body.Class === "Monk" || request.body.Class === "Ranger") {
@@ -282,7 +281,7 @@ else if (request.body.Class === "Monk" || request.body.Class === "Ranger") {
         weaponProf = weaponProf.concat(["simple weapons", "shortswords"])
         savingThrows = ["Strength", "Dexterity"]
         classTraits = "Class traits:\nChoose two proficiencies: Acrobatics, Athletics, History, Insight, Religion, or Stealth.\nWhile you have no armor or a shield, your AC eqauls 10 + your Dexterity modifier + your Wisdom modifier.\nMartial Arts - while you are not wearing armor, are not using a shield, are only using monk weapons (shortwords or any simply melee without heavy or two-handed property), or you are unarmed, you gain the following benefits: You can use Dexterity instead of Strength for attack and damage rolls of your unarmed strikes and monk weapons, you can roll a d4 in place of the normal damage of your unarmed strike or monk weapons. This die changes as you gain levels, When you use the attack action with an unarmed strike or monk weapon, you can take one unarmed strike as a bonus action."
-        equipment = ["shortsword or any simple weapon", "dungeoneer's pack or explorer's pack", "10 darts", `Gold pieces: ${gp}`]
+        equipment = ["shortsword or any simple weapon", "dungeoneer's pack or explorer's pack", "10 darts", `gold pieces: ${gp}`]
 
         for(let i = 0; i < 4; i++) {gp += Math.ceil(Math.random() * 4)}
     }
@@ -296,7 +295,7 @@ else if (request.body.Class === "Monk" || request.body.Class === "Ranger") {
         for(let i = 0; i < 5; i++) {gp += Math.ceil(Math.random() * 4)}
         gp *= 10
 
-        equipment = ["scale mail or leather armor", "two shortswords or two simple melee weapons", "dungioneer's pack or explorer's pack", "longbow with a quiver of 20 arrows", `Gold pieces: ${gp}`]
+        equipment = ["scale mail or leather armor", "two shortswords or two simple melee weapons", "dungioneer's pack or explorer's pack", "longbow with a quiver of 20 arrows", `gold pieces: ${gp}`]
 
     }
 }
@@ -320,7 +319,7 @@ else if (request.body.Class === "Rogue") {
     for(let i = 0; i < 4; i++) {gp += Math.ceil(Math.random() * 4)}
     gp *= 10
 
-    equipment = ["rapier or shortsword", "shortbow and quiver of 20 arrows or shortsword", "burglar's pack or dungeoneer's pack or explorer's pack", `Gold pieces: ${gp}`]
+    equipment = ["rapier or shortsword", "shortbow and quiver of 20 arrows or shortsword", "burglar's pack or dungeoneer's pack or explorer's pack", `gold pieces: ${gp}`]
 }
 else if (request.body.Class === "Wizard") {
 
@@ -341,7 +340,7 @@ else if (request.body.Class === "Wizard") {
     for(let i = 0; i < 4; i++) {gp += Math.ceil(Math.random() * 4)}
     gp *= 10
 
-    equipment = ["quarterstaff or dagger", "component pouch or arcane focus", "scholar's pack or explorer's pack", "spellbook", `Gold pieces: ${gp}`]
+    equipment = ["quarterstaff or dagger", "component pouch or arcane focus", "scholar's pack or explorer's pack", "spellbook", `gold pieces: ${gp}`]
 
 
 }
@@ -365,7 +364,7 @@ else if (request.body.Class === "Cleric" || request.body.Class === "Druid") {
         for(let i = 0; i < 5; i++) {gp += Math.ceil(Math.random() * 4)}
         gp *= 10
 
-        equipment = ["mace or warhammer (if proficient)", "scale armor, leather armor, or chain mail (if proficient)", "light crossbow with 20 bolts or any simple weapon", "preist's pack or explorer's pack", "shield", "holy symbol", `Gold pieces: ${gp}`]
+        equipment = ["mace or warhammer (if proficient)", "scale armor, leather armor, or chain mail (if proficient)", "light crossbow with 20 bolts or any simple weapon", "preist's pack or explorer's pack", "shield", "holy symbol", `gold pieces: ${gp}`]
     }
     else {
         armorProf = ["light armor", "medium armor", "shields"]
@@ -378,7 +377,7 @@ else if (request.body.Class === "Cleric" || request.body.Class === "Druid") {
         for(let i = 0; i < 2; i++) {gp += Math.ceil(Math.random() * 4)}
         gp *= 10
 
-        equipment = ["wooden shield or simple weapon", "scimitar or simple melee weapon", "leather armor", "explorer's pack", "druidic focus", `Gold pieces: ${gp}`]
+        equipment = ["wooden shield or simple weapon", "scimitar or simple melee weapon", "leather armor", "explorer's pack", "druidic focus", `gold pieces: ${gp}`]
     }
 }
 else if (request.body.Class === "Warlock" || request.body.Class === "Bard" || request.body.Class === "Sorcerer") {
@@ -403,7 +402,7 @@ else if (request.body.Class === "Warlock" || request.body.Class === "Bard" || re
         for(let i = 0; i < 5; i++) {gp += Math.ceil(Math.random() * 4)}
         gp *= 10
     
-        equipment = ["rapier, longsword, or a simple weapons", "diplomat's pack or entertainer's pack", "musical instrument of your choice", "leather armor", "dagger", `Gold pieces: ${gp}`]
+        equipment = ["rapier, longsword, or a simple weapons", "diplomat's pack or entertainer's pack", "musical instrument of your choice", "leather armor", "dagger", `gold pieces: ${gp}`]
     }
 
     else if (request.body.Class === "Sorcerer") {
@@ -415,7 +414,7 @@ else if (request.body.Class === "Warlock" || request.body.Class === "Bard" || re
         for(let i = 0; i < 3; i++) {gp += Math.ceil(Math.random() * 4)}
         gp *= 10
 
-        equipment = ["light crossbow with 20 bolts or any simple weapon", "component pouch or arcane focus", "dungeoneer's pack or explorer's pack", "two daggers", `Gold pieces: ${gp}`]
+        equipment = ["light crossbow with 20 bolts or any simple weapon", "component pouch or arcane focus", "dungeoneer's pack or explorer's pack", "two daggers", `gold pieces: ${gp}`]
     }
 
     else {
@@ -427,7 +426,7 @@ else if (request.body.Class === "Warlock" || request.body.Class === "Bard" || re
         for(let i = 0; i < 4; i++) {gp += Math.ceil(Math.random() * 4)}
         gp *= 10
 
-        equipment = ["light crossbow and 20 bolts or any simple weapon", "component pouch or arcane focus", "scholar's pack or dungeoneer's pack", "leather armor", "any simple weapon", "two daggers", `Gold pieces: ${gp}`]
+        equipment = ["light crossbow and 20 bolts or any simple weapon", "component pouch or arcane focus", "scholar's pack or dungeoneer's pack", "leather armor", "any simple weapon", "two daggers", `gold pieces: ${gp}`]
     }
 }
 
@@ -471,9 +470,9 @@ let profBonus = 2 //proficiency bonus determined by class and level, but all sta
 
 if (toolProf.length === 0) {toolProf[0] = "None"}
 
-//profBonus, raceTrait, classTrait, equipment, saving throws, weaponProf, armorProf, hp, hitDice, abilityScoreMod, abilityScoreArray, language, toolProf, speed, AC?????, Traits, Ideals, Bonds, Flaws, Description, charname, alignment
+//profBonus, raceTrait, classTrait, equipment, saving throws, weaponProf, armorProf, hp, hitDice, abilityScoreMod, abilityScoreArray, language, toolProf, speed, AC?????, Traits, Ideals, Bonds, Flaws, Description, charname, alignment, perception
 
-            await char.create({Race: request.body.Race, Subrace: request.body.Subrace, Class: request.body.Class, Name: request.body.CharName, Alignment: request.body.Alignment, raceTraits: raceTraits, classTraits: classTraits, abilityScoreArray: abilityScoreArray, abilityScoreMod: abilityScoreMod, abilityScoresConst: abilityScoresConst, hp: hp, speed: speed, profBonus: profBonus, savingThrows: savingThrows, weaponProf: weaponProf, armorProf: armorProf, language: language, toolProf: toolProf, equipment: equipment, Traits: request.body.Traits, Ideals: request.body.Ideals, Bonds: request.body.Bonds, Flaws: request.body.Flaws, Description: request.body.Description, User: request.user.id})
+            await char.create({Race: request.body.Race, Subrace: request.body.Subrace, Class: request.body.Class, Name: request.body.CharName, Alignment: request.body.Alignment, raceTraits: raceTraits, classTraits: classTraits, abilityScoreArray: abilityScoreArray, abilityScoreMod: abilityScoreMod, abilityScoresConst: abilityScoresConst, perception: perception, hp: hp, speed: speed, profBonus: profBonus, savingThrows: savingThrows, weaponProf: weaponProf, armorProf: armorProf, language: language, toolProf: toolProf, equipment: equipment, Traits: request.body.Traits, Ideals: request.body.Ideals, Bonds: request.body.Bonds, Flaws: request.body.Flaws, Description: request.body.Description, User: request.user.id})
             console.log('Character has been added!')
             response.redirect('/character')
         }catch(err){

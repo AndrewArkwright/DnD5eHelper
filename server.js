@@ -25,13 +25,13 @@ app.use(express.json())
 app.use(logger('dev'))
 // Sessions
 app.use(
-    session({
-      secret: 'keyboard cat',
-      resave: false,
-      saveUninitialized: false,
-      store: new MongoStore({ mongooseConnection: mongoose.connection }),
-    })
-  )
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  })
+)
   
 // Passport middleware
 app.use(passport.initialize())
@@ -42,6 +42,7 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/character', characterRoutes)
 app.use('/viewCharacters', viewCharactersRoutes)
+app.use('/logout', mainRoutes)
  
 app.listen(process.env.PORT, ()=>{
   console.log('Server is running, you better catch it!')
