@@ -8,4 +8,6 @@ router.get('/', ensureAuth, characterController.getCharacters) //We use / and no
 
 router.post('/createCharacter', characterController.createCharacter)
 
+router.delete("/deleteChar/:id", characterController.deleteCharacter);
+
 module.exports = router

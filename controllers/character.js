@@ -8,6 +8,16 @@ module.exports = {
             console.log(err)
         }
     },
+    deleteCharacter: async (request, response) => {
+        try{
+            let character = await char.findById({_id: request.params.id})
+            await char.remove({_id: request.params.id})
+            response.redirect("/viewCharacters")
+        }catch(err){
+            console.log(err)
+            response.redirect("/viewCharacters")
+        }
+    },
     createCharacter: async (request, response)=>{
         try{
             console.log(request.body.CharName)
@@ -23,6 +33,8 @@ module.exports = {
             Look into changing AC. Some classes and races have traits that increase AC like when you do not have armor. Might just need to add a blurb about it
             We do not have a default AC value right now
 
+            change wording of /character getCharacters so it is createCharacter instead
+
             Make it look prettyish and mobile friendly
             Make disability friendly
             Option to delete characters
@@ -33,6 +45,8 @@ module.exports = {
 
             AC - 10 + dex modifier, adding armor/clothing will change it from 10
             Initiative - dex mod
+
+            May need to check and see what happens when you don't fill out the form
 
             Personality traits - need 1 -- each one seems to have 2 skill proficiencies, a tool proficiency, and equipment related to that like a bard having a loot or theif with lockpick
             Ideals - need 1

@@ -10,6 +10,7 @@ const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
 const characterRoutes = require('./routes/character')
 const viewCharactersRoutes = require('./routes/viewCharacters')
+const methodOverride = require("method-override")
 
 const PORT = 8080
 
@@ -25,6 +26,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))
+app.use(methodOverride("_method"));
 // Sessions
 app.use(
   session({
