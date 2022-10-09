@@ -11,6 +11,8 @@ const mainRoutes = require('./routes/main')
 const characterRoutes = require('./routes/character')
 const viewCharactersRoutes = require('./routes/viewCharacters')
 
+const PORT = 2121
+
 require("dotenv").config({path: "./config/.env"});
 
 // Passport config
@@ -44,7 +46,7 @@ app.use('/character', characterRoutes)
 app.use('/viewCharacters', viewCharactersRoutes)
 app.use('/logout', mainRoutes)
  
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT || PORT, ()=>{
   console.log('Server is running, you better catch it!')
 })
 
