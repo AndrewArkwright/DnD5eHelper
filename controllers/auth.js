@@ -1,6 +1,8 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
+const Token = require("../models/token")
+const crypto = require("crypto")
 
  exports.getLogin = (req, res) => {
     if (req.user) {
@@ -8,6 +10,35 @@ const User = require('../models/User')
     }
     res.render('login', {
       title: 'Login'
+    })
+  }
+
+  exports.forgotPassword = (req, res) => {
+    //Check if email exists
+    if (!User.findOne(req.body.email)) {
+      req.flash("errors", "User with email address does not exist")
+      res.redirect('/')
+    }
+    //Set token, may need a way to not infinately do this and cause the DB to be overwhelmed
+    const token = new Token({
+      Token: crypto.randomBytes(20).toString("hex"),
+    })
+
+    token.save()
+
+    //Send email
+    const resetURL = `http://${req.headers.host}.passwordReset/${token.Token}`
+    req.flash("success", "An email with a password reset link has been sent!")
+    //Redirect to login
+    res.redirect('/')
+  }
+
+  exports.getReset = (req, res) => {
+    if (req.user) {
+      return res.redirect('/')
+    }
+    res.render('passwordReset', {
+      title: 'Password Reset'
     })
   }
   

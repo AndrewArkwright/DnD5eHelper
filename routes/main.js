@@ -6,6 +6,8 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 console.log("MainRoute")
 
 router.get('/', mainController.getIndex)
+router.get("/passwordReset", authController.getReset)
+router.post("/passwordReset", authController.forgotPassword)
 router.post('/login', authController.postLogin)
 router.get('/logout', authController.logout)
 router.get('/signup', authController.getSignup)
