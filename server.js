@@ -11,6 +11,7 @@ const mainRoutes = require('./routes/main')
 const characterRoutes = require('./routes/character')
 const viewCharactersRoutes = require('./routes/viewCharacters')
 const methodOverride = require("method-override")
+const nodemailer = require("nodemailer")
 
 const PORT = 8080
 
