@@ -16,6 +16,7 @@ const nodemailer = require("nodemailer")
   }
 
   exports.forgotPassword = async (req, res) => {
+
     //Check if email exists
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
     if (!User.findOne(req.body.email)) {
@@ -150,6 +151,41 @@ const nodemailer = require("nodemailer")
   }
   
   exports.postLogin = (req, res, next) => {
+        /*
+
+https://codesandbox.io/s/u3557?file=/views/contact.ejs
+
+    "action from form",
+    [
+      check("name of input or textarea")
+        .isLength({ min: 1 })
+        .withMessage("Message is required")
+        .trim(),
+      check("email")
+        .isEmail()
+        .withMessage("That email doesn‘t look right")
+        .bail()
+        .trim()
+        .normalizeEmail()
+    ],
+    (req, res) => {
+      console.log(req.body);
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.render("action stated at top because you reload the page with the error.", {
+          data: req.body,
+          errors: errors.mapped()
+        });
+      }
+  
+      const data = matchedData(req);
+      console.log("Sanitized: ", data);
+  
+      req.flash("success", "Some message");
+      res.redirect("/");
+    }
+    */
+
     const validationErrors = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
     if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })

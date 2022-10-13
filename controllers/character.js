@@ -35,6 +35,12 @@ module.exports = {
 
             change wording of /character getCharacters so it is createCharacter instead
 
+            Make sure that old password reset tokens are deleted if they request a new one so the most up to date one is in the db
+            check for 404 errors in get requests to make sure all things load
+
+            render() and if you add something other than the ejs file you want to render, it sends it as a file so the home location it searching for documents is different
+            It's not working in this case because you're adding the token as a "file" after the passwordReset "folder", so the browser uses that as part of the URL when requesting additional resources, assuming they are in the "passwordReset" folder. As for why using /views/css/style.css didn't work, your CSS file isn't inside a views folder. Its physical location is in public/css/style.css, but when you add the public folder as a static resource to Express, it serves up everything inside that folder as if it were in the root folder, so /public/css/style.css becomes /css/style.css. Same with the /js/main.js file.
+
             Make it look prettyish and mobile friendly
             Make disability friendly
             Option to delete characters
