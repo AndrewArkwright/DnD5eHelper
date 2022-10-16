@@ -11,6 +11,7 @@ module.exports = {
     deleteCharacter: async (request, response) => {
         try{
             let character = await char.findById({_id: request.params.id})
+            //remove is deprecated, implement deleteOne later 
             await char.remove({_id: request.params.id})
             response.redirect("/viewCharacters")
         }catch(err){
@@ -20,6 +21,96 @@ module.exports = {
     },
     createCharacter: async (request, response)=>{
         try{
+            //Error checking
+            const validation = []
+            if (!request.body.Class) {
+                console.log("No class was selected")
+                validation.push({ msg: 'A Class was not selected. Selecting a Class is required.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+            if (!request.body.Race) {
+                console.log("No Race was selected")
+                validation.push({ msg: 'A Race was not selected. Selecting a Race is required.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+            if (!request.body.Subrace && request.body.Race === "Elf") {
+                console.log("No Subrace was selected")
+                validation.push({ msg: 'A Subrace was not selected. Selecting a Subrace is required.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+            if (!request.body.Subrace && request.body.Race === "Dwarf") {
+                console.log("No SubRace was selected")
+                validation.push({ msg: 'A Subrace was not selected. Selecting a Subrace is required.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+            if (!request.body.Subrace && request.body.Race === "Gnome") {
+                console.log("No SubRace was selected")
+                validation.push({ msg: 'A Subrace was not selected. Selecting a Subrace is required.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+            if (!request.body.Subrace && request.body.Race === "Halfling") {
+                console.log("No SubRace was selected")
+                validation.push({ msg: 'A Subrace was not selected. Selecting a Subrace is required.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+            //Want to allow you to put in empty text fields for everything other than the dropdowns 
+            if (!request.body.charName) {
+                console.log("Character name empty")
+                validation.push({ msg: 'A character name was not put in, please enter a character name.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+            if (!request.body.Bonds) {
+                console.log("Bonds was empty")
+                validation.push({ msg: 'A Bond was not put in, please enter a Bond.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+            if (!request.body.Ideals) {
+                console.log("Ideals was empty")
+                validation.push({ msg: 'An Ideal was not put in, please enter an Ideal.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+            if (!request.body.Description) {
+                console.log("Description was empty")
+                validation.push({ msg: 'A Description was not put in, please enter a Description.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+            if (!request.body.Traits) {
+                console.log("Traits was empty")
+                validation.push({ msg: 'A Trait was not put in, please enter a Trait.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+            if (!request.body.Flaws) {
+                console.log("Flaws was empty")
+                validation.push({ msg: 'A Flaw was not put in. Please enter a Flaw.' })
+                request.flash("errors", validation)
+                return response.redirect("/")
+            }
+
+            /*
+            const validation = []
+
+            //Check if email exists
+            req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
+
+            let emailUser = await User.findOne({email: req.body.email})
+            if (!emailUser) {
+            console.log("User with email not found")
+            validation.push({ msg: 'User with email address was not found.' })
+            req.flash("errors", validation)
+            return res.redirect("/")
+    }
+            */
             console.log(request.body.CharName)
             console.log(request.body.Alignment)
             console.log("UserID: ", request.user.id)
@@ -35,13 +126,9 @@ module.exports = {
 
             change wording of /character getCharacters so it is createCharacter instead
 
-            Make sure that old password reset tokens are deleted if they request a new one so the most up to date one is in the db
-            check for 404 errors in get requests to make sure all things load
-
             render() and if you add something other than the ejs file you want to render, it sends it as a file so the home location it searching for documents is different
             It's not working in this case because you're adding the token as a "file" after the passwordReset "folder", so the browser uses that as part of the URL when requesting additional resources, assuming they are in the "passwordReset" folder. As for why using /views/css/style.css didn't work, your CSS file isn't inside a views folder. Its physical location is in public/css/style.css, but when you add the public folder as a static resource to Express, it serves up everything inside that folder as if it were in the root folder, so /public/css/style.css becomes /css/style.css. Same with the /js/main.js file.
 
-            Make it look prettyish and mobile friendly
             Make disability friendly
             Option to delete characters
             Option to reset password/email

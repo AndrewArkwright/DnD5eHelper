@@ -16,7 +16,9 @@
         </header>
 
         <main class="flex flex-col mx-10">
-            <h1>Your characters:</h1>
+            <% if (data.length > 0) { %>
+                <h1 class="text-lg font-medium">Your characters:</h1>
+            <% } %>
             <ul class="characterList">
             <% for(let i=0; i < data.length; i++) {%>
                 <li class="char flex flex-col ml-20 mb-10">
@@ -56,7 +58,7 @@
             <p class="mb-10">All of the information is based on the information from the D&D 5e handbook. I do not own any of it and only on this website. All rolls are automatically randomized and done for you. If anything seems incorrect or if I should add something important, let me know <a class="underline decoration-teal-300 text-teal-300" href="https://aarkwright.netlify.app/">here</a>.</p>
  
             <section class="mb-10">
-                <p>What is left for you to do:</p>
+                <p class="text-lg font-medium">What is left for you to do:</p>
 
                 <ul class="list-disc">
                     <li class="ml-20">You need to choose your equipment from the choices I gave you and remember to adjust your AC appropriately (armor from equipment + dex modifier). Your DM may or may not allow you to use your gold beforehand as well to purchase items. You can use this website to search for items and look up details about them <a class="underline decoration-teal-300 text-teal-300" href="https://www.dndbeyond.com/equipment">here</a>.</li>
@@ -67,7 +69,7 @@
             </section>
  
             <section class="mb-10">
-                <p>Future updates:</p>
+                <p class="text-lg font-medium">Future updates:</p>
                 <ul class="list-disc">
                     <li class="ml-20">Make it easier to choose equipment by most likely adding the list of equipment you can choose from.</li>
                     <li class="ml-20">Add a way to search for the spells/skills that you can have to see details about them.</li>
