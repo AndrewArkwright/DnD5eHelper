@@ -16,23 +16,32 @@ const nodemailer = require("nodemailer")
   }
 
   exports.forgotPassword = async (req, res) => {
+    const validation = []
 
     //Check if email exists
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
-    if (!User.findOne(req.body.email)) {
+
+    let emailUser = await User.findOne({email: req.body.email})
+    if (!emailUser) {
       console.log("User with email not found")
-      req.flash("errors", "User with email address does not exist")
-      res.redirect('/')
+      validation.push({ msg: 'User with email address was not found.' })
+      req.flash("errors", validation)
+      return res.redirect("/")
     }
 
+    console.log("Email Exists")
+
+    //if token exists, then we do not create a new one
     let tokenAlreadyExists = await Token.findOne({email: req.body.email})
     if (tokenAlreadyExists) {
       //maybe we just update the token
       console.log("Token exists already") //works, but still get an error that crashes the server: Cannot set headers after they are sent to the client
-      req.flash("errors", "A password reset email has already been sent, please check your email.")
-      res.redirect('/')
+      validation.push({ msg: 'A password reset email has previously been sent and is still active, please use the link in that email to reset your password.' })
+      req.flash("errors", validation)
+      return res.redirect('/')
     }
-    //Set token, may need a way to not infinately do this and cause the DB to be overwhelmed
+
+    console.log("Token not found so creating a new one")
     const token = new Token({
       Token: crypto.randomBytes(20).toString("hex"),
       email: req.body.email,
@@ -55,20 +64,22 @@ const nodemailer = require("nodemailer")
       if (error) {
         console.log(error);
       } else {
-        console.log("Server is ready to take our messages");
+        console.log("Mail transporter is working");
       }
     });
 
     const resetURL = `http://${req.headers.host}.passwordReset/${token.Token}`
 
     let msg = await transporter.sendMail({
-      from: "D&D 5e Charactor Creator <dndcharcreator@outlook.com>",
+      from: "D&D 5e Charactor Creator <dndcharcreator@outlook.com",
       to: req.body.email,
       subject: "D&D 5e Character Creator Password Reset",
-      text: `A password reset request was sent for your account. Please click the following link to reset your password: ${resetURL}`
+      text: `A password reset request was sent for your account. Please click the following link to reset your password and this link will expired in one hour: ${resetURL}.`
     })
 
-    req.flash("success", "An email with a password reset link has been sent!")
+    validation.push({ msg: 'An email with a password reset link has been sent!' })
+    req.flash("success", validation)
+    console.log("Email was sent")
 
     //Redirect to login
     res.redirect('/')
@@ -84,11 +95,9 @@ const nodemailer = require("nodemailer")
   }
 
   exports.getResetForm = async (req, res) => {
-    console.log("Token: ", req.params.token) //works
     const token = await Token.findOne({Token: req.params.token}) 
-    console.log("Token values: ",token.Token, token.email)
     if(!token) {
-      req.flash("errors", "Reset password link has expired, please try again.")
+      req.flash("errors", [{msg: "Reset password link has expired, please try again."}])
       console.log("Cannot find token in db")
       return res.redirect('/')
     }
@@ -96,34 +105,25 @@ const nodemailer = require("nodemailer")
       tokenObj: token, //to pass it so resetPassword can use it, info is passed through a EJS variable
     })
   }
-  /*
-    Should be able to render req.params.token if I pass it through the render request in the GET request like we render viewCharacters. If not, we should be able to automatically asign a part of the form as that variable and use hidden to hide it from the user.
-  */
 
   exports.resetPassword = async (req, res)=> {
-    console.log("New pw: ", req.body.password) //works
-    console.log("Token val: ", req.params.token) //works now
 
-    const validationErrors = []
-    if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
-    if (req.body.password !== req.body.confirmPassword) validationErrors.push({ msg: 'Passwords do not match' })
+    const validation = []
+    if (!validator.isLength(req.body.password, { min: 8 })) validation.push({ msg: 'Password must be at least 8 characters long' })
+    if (req.body.password !== req.body.confirmPassword) validation.push({ msg: 'Passwords do not match' })
 
     const token = await Token.findOne({Token: req.params.token})
-    console.log("Token test: ", token.Token, token.email)
     const user = await User.findOne({email: token.email})
 
     if (!user) { //make sure we can still grab the email in order to update it since the GET could have a while ago.
-      req.flash("errors", "Reset password link has expired, please try again.")
+      validation.push({ msg: 'Reset password link has expired, please try again.' })
+      req.flash("errors", validation)
       console.log("Error finding email")
       return res.redirect('/')
     }
-
-    // UserSchema.pre('save', function save(next)
     console.log("Old Password: ", user.password)
 
     user.password = req.body.password
-
-    //it all works, but we need to encrypt
 
     User.findOneAndUpdate({$or: [
       {email: user.email}
@@ -151,40 +151,6 @@ const nodemailer = require("nodemailer")
   }
   
   exports.postLogin = (req, res, next) => {
-        /*
-
-https://codesandbox.io/s/u3557?file=/views/contact.ejs
-
-    "action from form",
-    [
-      check("name of input or textarea")
-        .isLength({ min: 1 })
-        .withMessage("Message is required")
-        .trim(),
-      check("email")
-        .isEmail()
-        .withMessage("That email doesn‘t look right")
-        .bail()
-        .trim()
-        .normalizeEmail()
-    ],
-    (req, res) => {
-      console.log(req.body);
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return res.render("action stated at top because you reload the page with the error.", {
-          data: req.body,
-          errors: errors.mapped()
-        });
-      }
-  
-      const data = matchedData(req);
-      console.log("Sanitized: ", data);
-  
-      req.flash("success", "Some message");
-      res.redirect("/");
-    }
-    */
 
     const validationErrors = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
@@ -195,10 +161,11 @@ https://codesandbox.io/s/u3557?file=/views/contact.ejs
   
     if (validationErrors.length) {
       req.flash('errors', validationErrors)
-      return res.redirect('/signup')
+      return res.redirect('/')
     }
+
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
-  
+
     passport.authenticate('local', (err, user, info) => {
       if (err) { return next(err) }
       if (!user) {
@@ -207,8 +174,8 @@ https://codesandbox.io/s/u3557?file=/views/contact.ejs
       }
       req.logIn(user, (err) => {
         if (err) { return next(err) }
-        req.flash('success', { msg: 'Success! You are logged in.' })
-        res.redirect(req.session.returnTo || '/character') // '/character'?
+        req.flash('success', [{ msg: 'Success! You are logged in.' }])
+        res.redirect(req.session.returnTo || '/character')
       })
     })(req, res, next)
   }
