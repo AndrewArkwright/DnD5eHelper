@@ -122,7 +122,6 @@ const nodemailer = require("nodemailer")
       console.log("Error finding email")
       return res.redirect('/')
     }
-    console.log("Old Password: ", user.password)
 
     user.password = req.body.password
 
@@ -144,10 +143,6 @@ const nodemailer = require("nodemailer")
     user.updateOne({password: req.body.password}) //this and or below is required
     user.save()
 
-    console.log("Found email and resetting password")
-    //const user = await User.findOneAndUpdate({email: token.email}, {password: req.body.password}, {new: true}) //new is used to basically save it.
-
-    console.log("New Password: ", user.password)
     res.redirect('/')
   }
   

@@ -59,7 +59,6 @@ module.exports = {
                 request.flash("errors", validation)
                 return response.redirect("/")
             }
-            //Want to allow you to put in empty text fields for everything other than the dropdowns 
             if (!request.body.charName) {
                 console.log("Character name empty")
                 validation.push({ msg: 'A character name was not put in, please enter a character name.' })
@@ -97,27 +96,8 @@ module.exports = {
                 return response.redirect("/")
             }
 
-            /*
-            const validation = []
-
-            //Check if email exists
-            req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
-
-            let emailUser = await User.findOne({email: req.body.email})
-            if (!emailUser) {
-            console.log("User with email not found")
-            validation.push({ msg: 'User with email address was not found.' })
-            req.flash("errors", validation)
-            return res.redirect("/")
-    }
-            */
-            console.log(request.body.CharName)
-            console.log(request.body.Alignment)
-            console.log("UserID: ", request.user.id)
-
             /************Things to do**************/
             /*
-            Add this for spell classes - \nCharisma is your spellcasting ability for spells\nYour spell save DC = 8 + proficiency bonus = charisma modifier. Your spell attack modifier = proficiency bonus + charisma modifier.
             
             Tool proficiency should have a value of none if there are not any values
             
@@ -126,12 +106,7 @@ module.exports = {
 
             change wording of /character getCharacters so it is createCharacter instead
 
-            render() and if you add something other than the ejs file you want to render, it sends it as a file so the home location it searching for documents is different
-            It's not working in this case because you're adding the token as a "file" after the passwordReset "folder", so the browser uses that as part of the URL when requesting additional resources, assuming they are in the "passwordReset" folder. As for why using /views/css/style.css didn't work, your CSS file isn't inside a views folder. Its physical location is in public/css/style.css, but when you add the public folder as a static resource to Express, it serves up everything inside that folder as if it were in the root folder, so /public/css/style.css becomes /css/style.css. Same with the /js/main.js file.
-
             Make disability friendly
-            Option to delete characters
-            Option to reset password/email
             Character limits for textboxes?
 
             inspiration - given by DM
@@ -139,13 +114,10 @@ module.exports = {
             AC - 10 + dex modifier, adding armor/clothing will change it from 10
             Initiative - dex mod
 
-            May need to check and see what happens when you don't fill out the form
-
             Personality traits - need 1 -- each one seems to have 2 skill proficiencies, a tool proficiency, and equipment related to that like a bard having a loot or theif with lockpick
             Ideals - need 1
             Bonds - need 1
             Flaws - need 1
-
             */
 
 //generate 6 Ability Score numbers
@@ -165,8 +137,7 @@ for(let i = 0; i < 6; i++) {
 
 //Assign ability score based on class, auto assigned based on info on table on page 12 for best ability and then auto assigned, also array is sorted where [0] is strength and [5] is charisma
 abilityScoreArray = abilityScoreArray.sort((a, b) => b - a)
-const abilityScoresConst = abilityScoreArray
-console.log("All rolls before additions: ", abilityScoresConst)
+const abilityScoresConst = abilityScoreArray //Save ability score rolls before we do anything to them
 
 let speed, weaponProf = [], toolProf = [], language = [], raceTraits
 
@@ -309,11 +280,7 @@ else if (request.body.Race === "Tiefling") {
     language = ["Common", "Infernal"]
 }
 
-console.log("Race increase: ", abilityScoreArray)
-
 //Make adjustments per class
-console.log("Languages: ",language)
-
 let gp = 0, armorProf, savingThrows, classTraits, equipment
 
 if (request.body.Class === "Paladin") {
@@ -544,12 +511,9 @@ console.log("Adjust per class and final score: ", abilityScoreArray)
 //Make modifiers
 let abilityScoreMod = abilityScoreArray.map(value => Math.floor((value - 10)/2))
 
-console.log("Ability Score Mods: ", abilityScoreMod)
-
 let initiative = abilityScoreMod[1] //roll d20 and add initiative (dex modifier)
 
 //HP calc
-
 let hp, hitDice
 if (request.body.Class === "Barbarian") {
     hp = Math.ceil(Math.random() * 12) + abilityScoreMod[2] 

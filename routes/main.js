@@ -3,7 +3,6 @@ const router = express.Router()
 const authController = require('../controllers/auth') 
 const mainController = require('../controllers/main')
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
-console.log("MainRoute")
 
 router.get('/', mainController.getIndex)
 router.get("/passwordReset", authController.getReset) //get form to enter email

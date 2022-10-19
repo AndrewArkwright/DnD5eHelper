@@ -5,17 +5,6 @@ module.exports = {
 }
 
 /*
-createTODO: async (req, res)=>{
-    try{
-        await Todo.create({todo: req.body.todoItem, completed: false})
-        console.log('Todo has been added!')
-        res.redirect('/todos')
-    }catch(err){
-        console.log(err)
-    }
-},
-
-
 app.get('/spell',async (request, response)=>{
     const characterList = await db.collection('characterList').find().toArray()
     response.render('spell.ejs', {spell})
