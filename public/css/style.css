@@ -832,10 +832,6 @@ select {
   height: 5rem;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
 .h-5 {
   height: 1.25rem;
 }
@@ -860,12 +856,12 @@ select {
   width: 100%;
 }
 
-.w-auto {
-  width: auto;
-}
-
 .w-5 {
   width: 1.25rem;
+}
+
+.w-auto {
+  width: auto;
 }
 
 .max-w-md {
