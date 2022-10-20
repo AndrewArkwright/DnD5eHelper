@@ -69,7 +69,7 @@ const nodemailer = require("nodemailer")
       }
     });
 
-    const resetURL = `http://${req.headers.host}.passwordReset/${token.Token}`
+    const resetURL = `https://${req.headers.host}/passwordReset/${token.Token}`
 
     let msg = await transporter.sendMail({
       from: `D&D 5e Charactor Creator <${process.env.MAIL_USER}`,
