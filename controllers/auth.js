@@ -49,7 +49,6 @@ const nodemailer = require("nodemailer")
 
     token.save()
 
-    console.log(process.env.MAIL_USER, process.env.MAIL_PASS)
     //Send email
     const transporter = await nodemailer.createTransport({
       host: "smtp.office365.com",
