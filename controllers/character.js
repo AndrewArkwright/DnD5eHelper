@@ -109,11 +109,6 @@ module.exports = {
             Make disability friendly
             Character limits for textboxes?
 
-            inspiration - given by DM
-
-            AC - 10 + dex modifier, adding armor/clothing will change it from 10
-            Initiative - dex mod
-
             Personality traits - need 1 -- each one seems to have 2 skill proficiencies, a tool proficiency, and equipment related to that like a bard having a loot or theif with lockpick
             Ideals - need 1
             Bonds - need 1
