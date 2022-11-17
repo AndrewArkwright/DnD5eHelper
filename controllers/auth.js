@@ -71,7 +71,7 @@ const nodemailer = require("nodemailer")
     const resetURL = `https://${req.headers.host}/passwordReset/${token.Token}`
 
     let msg = await transporter.sendMail({
-      from: `D&D 5e Charactor Creator <${process.env.MAIL_USER}`,
+      from: `D&D 5e Charactor Creator <${process.env.MAIL_USER}>`,
       to: req.body.email,
       subject: "D&D 5e Character Creator Password Reset",
       text: `A password reset request was sent for your account. Please click the following link to reset your password and this link will expired in one hour: ${resetURL}.`
